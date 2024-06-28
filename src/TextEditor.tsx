@@ -15,11 +15,17 @@ import {
 } from "@chakra-ui/react";
 import fontData from "./punt-frontend-assignment.json"; // Assuming the JSON data is saved here
 
+type FontData = {
+  [fontFamily: string]: {
+    [weight: string]: string;
+  };
+};
+
 const TextEditor: React.FC = () => {
   const [text, setText] = useState("");
-  const [fontFamily, setFontFamily] = useState("ABeeZee");
-  const [fontWeight, setFontWeight] = useState("400");
-  const [italic, setItalic] = useState(false);
+  const [fontFamily, setFontFamily] = useState<string>("ABeeZee");
+  const [fontWeight, setFontWeight] = useState<string>("400");
+  const [italic, setItalic] = useState<boolean>(false);
 
   useEffect(() => {
     const savedText = localStorage.getItem("text");
@@ -45,7 +51,7 @@ const TextEditor: React.FC = () => {
   ) => {
     const newFontFamily = event.target.value;
     setFontFamily(newFontFamily);
-    setFontWeight(Object.keys(fontData[newFontFamily])[0]);
+    setFontWeight(Object.keys((fontData as FontData)[newFontFamily])[0]);
     setItalic(false);
   };
 
@@ -68,14 +74,9 @@ const TextEditor: React.FC = () => {
     localStorage.clear();
   };
 
-  const getFontUrl = () => {
-    const weight = italic ? `${fontWeight}italic` : fontWeight;
-    return fontData[fontFamily][weight];
-  };
-
   return (
-    <VStack spacing={4} p={4} align="stretch" minH="100vh">
-      <Heading as="h1" mb={2} textAlign="center">
+    <VStack spacing={8} p={8} align="stretch" minH="100vh">
+      <Heading as="h1" mb={4} textAlign="center">
         Punt Partners Assignment
       </Heading>
       <Box
@@ -90,7 +91,7 @@ const TextEditor: React.FC = () => {
           <FormControl id="font-family">
             <FormLabel>Font Family</FormLabel>
             <Select value={fontFamily} onChange={handleFontFamilyChange}>
-              {Object.keys(fontData).map((font) => (
+              {Object.keys(fontData as FontData).map((font) => (
                 <option key={font} value={font}>
                   {font}
                 </option>
@@ -101,7 +102,7 @@ const TextEditor: React.FC = () => {
           <FormControl id="font-weight">
             <FormLabel>Variant</FormLabel>
             <Select value={fontWeight} onChange={handleFontWeightChange}>
-              {Object.keys(fontData[fontFamily]).map((weight) => (
+              {Object.keys((fontData as FontData)[fontFamily]).map((weight) => (
                 <option key={weight} value={weight}>
                   {weight}
                 </option>
@@ -114,10 +115,13 @@ const TextEditor: React.FC = () => {
             <Switch
               isChecked={italic}
               onChange={handleItalicChange}
-              isDisabled={!fontData[fontFamily][`${fontWeight}italic`]}
+              isDisabled={
+                !(fontData as FontData)[fontFamily][`${fontWeight}italic`]
+              }
             />
           </FormControl>
         </HStack>
+
         <Textarea
           value={text}
           onChange={(e) => setText(e.target.value)}
@@ -130,6 +134,7 @@ const TextEditor: React.FC = () => {
           height="400px"
           mb={4}
         />
+
         <HStack spacing={4} justifyContent="center">
           <Button onClick={handleReset}>Reset</Button>
           <Button onClick={() => localStorage.setItem("text", text)}>
@@ -138,9 +143,9 @@ const TextEditor: React.FC = () => {
         </HStack>
       </Box>
       <Spacer />
-      <Box as="footer" py={4} textAlign="center" borderTop="1px">
+      <Box as="footer" py={4} textAlign="center" borderTop="1px" mt={8}>
         <Text>
-          &copy; {new Date().getFullYear()} Punt Partners. All rights reserved.
+          &copy; {new Date().getFullYear()} Mohd Asif. All rights reserved.
         </Text>
       </Box>
     </VStack>
