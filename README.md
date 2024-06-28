@@ -1,30 +1,70 @@
-# React + TypeScript + Vite
+# Punt Partners Text Editor
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a simple text editor application built using React, TypeScript, and Chakra UI. The application allows users to select a font family, variant, and toggle italic styling. It also features autosave functionality to preserve text and settings between sessions.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **Font Family Selector**: Choose from a list of Google Fonts.
+- **Font Weight Selector**: Select the appropriate font weight for the chosen font family.
+- **Italic Toggle**: Toggle italic styling for the selected font family and weight combination.
+- **Autosave**: Automatically save the text, font family, and font weight in local storage.
+- **Reset**: Reset the text and settings to default values.
+- **Responsive Design**: The application is responsive and adjusts to different screen sizes.
 
-## Expanding the ESLint configuration
+## Installation and Setup
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+### Prerequisites
 
-- Configure the top-level `parserOptions` property like this:
+- Node.js (version 14 or higher)
+- npm (version 7 or higher)
 
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+### Clone the Repository
+
+```bash
+git clone https://github.com/heyasif/punt-editor.git
+cd punt-editor
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Install Dependencies
+
+```bash
+npm install
+```
+
+### Running the Application Locally
+
+```bash
+npm run dev
+```
+
+This will start the development server and you can view the application at `http://localhost:3000`.
+
+### Building the Application
+
+```bash
+npm run build
+```
+
+This will create an optimized production build of the application in the `dist` folder.
+
+## Deployment
+
+The application is deployed on Vercel. You can view it at the following URL:
+
+[Punt Partners Text Editor](https://punt-editor-99gn.vercel.app/)
+
+## Assumptions and Improvements
+
+- The application currently supports a predefined list of Google Fonts.
+- Additional features such as text alignment, color selection, and more can be added to enhance the functionality.
+- Error handling for unsupported font-variant combinations is implemented.
+
+## License
+
+This project is licensed under the MIT License.
+
+## Contact
+
+For any inquiries, please contact Mohd Asif at hellomohdasif@gmail.com.
+
+---
