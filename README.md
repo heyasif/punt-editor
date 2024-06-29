@@ -11,6 +11,14 @@ This is a simple text editor application built using React, TypeScript, and Chak
 - **Reset**: Reset the text and settings to default values.
 - **Responsive Design**: The application is responsive and adjusts to different screen sizes.
 
+## Live Demo
+
+Check out the live demo of the app [here](https://punt-editor-99gn.vercel.app/).
+
+## Screenshots
+
+![Screenshot 1](https://github.com/heyasif/punt-editor/blob/main/src/assets/Home.png?raw=true)
+
 ## Installation and Setup
 
 ### Prerequisites
@@ -46,12 +54,6 @@ npm run build
 ```
 
 This will create an optimized production build of the application in the `dist` folder.
-
-## Deployment
-
-The application is deployed on Vercel. You can view it at the following URL:
-
-[Punt Partners Text Editor](https://punt-editor-99gn.vercel.app/)
 
 ## Assumptions and Improvements
 
